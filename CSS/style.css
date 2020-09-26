@@ -1,16 +1,17 @@
 .row {
-padding-top: 10%;
+  padding-top: 10%;
 }
 
-h1 {
-    text-align: center;
+#clear {
+  text-align: center;
 }
 
 h3 {
-text-align: center;
-padding-bottom: 4%;
+  text-align: center;
+  padding-bottom: 4%;
 }
 
-.start-button {
-    text-align: center;
+#q-block {
+  text-align: center;
+  padding-top: 10%;
 }
