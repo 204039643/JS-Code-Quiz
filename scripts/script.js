@@ -4,16 +4,19 @@ var startSectionEl = document.getElementById("startSection");
 var questionsEl = document.getElementById("questions");
 var titleEl = document.getElementById("title");
 var choicesEl = document.getElementById("choices");
-var endScreenEl = document.getElementById("endScreen");
+var endScreenEl = document.getElementById("end-screen");
 var submitEl = document.getElementById("submit");
 var timerEl = document.getElementById("time");
 var feedbackEl = document.getElementById("feedback");
 var answerEl = document.getElementById("answerDiv");
-var time = 75;
-var timerId;
+var finalScoreEl = document.getElementById("final-score");
+var initialsEl = document.getElementById("initials");
+var HSrowEl = document.getElementById("HSrow");
 
 //JS variables
-
+var time = 75;
+var timerId;
+var listing;
 var questionId = 0;
 
 //array of objects
@@ -62,13 +65,6 @@ function startTimer() {
     }
 }
 
-function endQuiz() {
-    clearInterval(timerId);
-    timerEl.textContent = time;
-}
-
-
-
 function startQuiz() {
     console.log("Quiz has started!");
     startSectionEl.setAttribute("class", "hide");
@@ -78,13 +74,44 @@ function startQuiz() {
     newQuestion();
 }
 
+function endQuiz() {
+    clearInterval(timerId);
+    timerEl.textContent = time;
+    questionsEl.setAttribute("class", "hide");
+    endScreenEl.removeAttribute("class");
+    finalScoreEl.textContent = time + " seconds";
+    var score = time;
+    localStorage.setItem("score", score);
+}
+
+function addHighScore() {
+    var initials = initialsEl.value;
+    if (initials === "") {
+        alert("Please enter a value");
+    } else if (initials.length > 3) {
+        alert("Please use 3 characters or less");
+        return;
+    }
+    localStorage.setItem("initials", initials);
+    window.location.href = "./highscores.html";
+}
+
+function showHighScores() {
+    var score = localStorage.getItem("score");
+    var initials = localStorage.getItem("initials");
+    var newListing = document.createElement("h5");
+    newListing.textContent = "1. " + initials + ": " + score;
+    HSrowEl.appendChild(newListing);
+    console.log(HSrowEl);
+    console.log(initals + ": " + score);
+}
+
 //Create a new question with 4 multiple choice answers
 function newQuestion() {
 
     var currentQuestion = questions[questionId];
     titleEl.textContent = currentQuestion.title;
     choicesEl.innerHTML = "";
-
 
     //Create 4 answer buttons for the current question    
     currentQuestion.choices.forEach((choice, i) => {
@@ -97,9 +124,6 @@ function newQuestion() {
         choicesEl.appendChild(button);
 
     })
-
-
-
 }
 
 function aButtonClick() {
@@ -114,7 +138,6 @@ function aButtonClick() {
 
         // display new time on page
         timerEl.textContent = time;
-
         feedbackEl.textContent = "Wrong!";
     } else {
         feedbackEl.textContent = "Correct!";
@@ -140,3 +163,4 @@ function aButtonClick() {
 
 //events
 startButton.addEventListener("click", startQuiz);
+submitEl.addEventListener("click", addHighScore);
