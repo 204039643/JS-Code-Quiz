@@ -12,21 +12,54 @@
 </head>
 
 <body>
-    <div id= "clear">
+
+    <!--Nav Bar-->
+    <div>
+        <a href="./highscores.html">View Highcores</a>
+    </div>
+
+    <!--Timer area-->
+    <div class="timer">
+        Time:
+        <span id="time">
+            0
+        </span>
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8">
-                <h1><strong>Coding Quiz Challenge</strong></h1>
-                <h3>This will be a timed quiz that challenges your understanding of basic javascript terminology.
-                    Click the 'Start' button when ready.</h3>
-                <button id="start-button" type="button" class="btn btn-primary btn-lg">Start!</button>
-            </div>
-            <div class="col-md-2">
+
+            <div class="col-md-8 offset-md-2 text-center">
+                <!---Start Container-->
+                <div id="startSection">
+                    <h1 id="q-block"><strong>Coding Quiz Challenge</strong></h1>
+                    <h3 id="a-block">This will be a timed quiz that challenges your understanding of basic javascript
+                        terminology.
+                        Click the 'Start' button when ready.</h3>
+                    <button id="start-button" type="button" class="btn btn-primary btn-lg">Start!</button>
+                </div>
+                <!--Questions Cont-->
+                <div id="questions" class="hide">
+                    <h2 id="title"></h2>
+                    <div id="choices" class="choices"></div>
+                </div>
+
+                <!--Scores cont-->
+
+
+                <div id="end-screen" class="hide">
+                    <h2>All done!</h2>
+                    <p>Your final score is <span id="final-score"></span>.</p>
+                    <p>
+                        Enter initials: <input type="text" id="initials" max="3" />
+                        <button id="submit">Submit</button>
+                    </p>
+                </div>
+
+                <div id="feedback" class="feedback hide"></div>
+
             </div>
         </div>
-    </div>
     </div>
     <script src="./script.js"></script>
 </body>
