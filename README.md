@@ -1,6 +1,6 @@
 # JS-Code-Quiz
 
-This is a timed quiz that has 4 questions. Once user clicks 'start', all questions are dynamically created through DOM manipulation. Each question has 4 responses that are presented as buttons below the question. Use is given 75 seconds to complete and receives a 15 second penalty for each wrong answer. User's also have the ability to save their high score and view a high score listing for all quiz takers (on a separate page).
+This is a timed quiz that has 5 questions. Once user clicks 'start', all questions are dynamically created through DOM manipulation. Each question has 4 responses that are presented as buttons below the question. User is given 100 seconds to complete and receives a 15 second penalty for each wrong answer. Users also have the ability to save their high score and view a high score listing for all quiz takers (on a separate page).
 
 URL of deployed app: https://204039643.github.io/02-responsive-portfolio/
 
